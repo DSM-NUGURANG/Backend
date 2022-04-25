@@ -49,6 +49,10 @@ dependencies {
 
     // mysql
     runtimeOnly ("mysql:mysql-connector-java")
+
+    // h2
+    runtimeOnly ("com.h2database:h2")
+
 }
 
 tasks.withType<KotlinCompile> {
