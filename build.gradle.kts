@@ -42,6 +42,9 @@ dependencies {
     // starter web
     implementation ("org.springframework.boot:spring-boot-starter-web")
 
+    // log
+    implementation("io.github.microutils:kotlin-logging:2.1.21")
+
     // kotlin
     implementation ("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation ("org.jetbrains.kotlin:kotlin-reflect")
