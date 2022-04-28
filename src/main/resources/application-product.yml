@@ -4,6 +4,8 @@ spring:
     password: ${MYSQL_PASSWORD}
     url: ${MYSQL_URL}
     username: ${MYSQL_USERNAME}
+  jpa:
+    open-in-view: false
   config:
     activate:
       on-profile: product
