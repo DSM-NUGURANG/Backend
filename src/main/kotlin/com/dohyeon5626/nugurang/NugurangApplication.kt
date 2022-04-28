@@ -1,8 +1,10 @@
 package com.dohyeon5626.nugurang
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 
+@ConfigurationPropertiesScan(basePackages = ["com.dohyeon5626.nugurang"])
 @SpringBootApplication
 class NugurangApplication
 

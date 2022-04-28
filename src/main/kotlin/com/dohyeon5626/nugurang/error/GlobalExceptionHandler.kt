@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 
 @ControllerAdvice
 class GlobalExceptionHandler {
-
     @ExceptionHandler(MethodArgumentNotValidException::class, HttpMessageNotReadableException::class)
     protected fun handleMethodArgumentNotValidException(e: Exception): ResponseEntity<ErrorResponse> {
         val response = ErrorResponse(ErrorCode.BAD_REQUEST, e.message!!)
@@ -30,5 +29,4 @@ class GlobalExceptionHandler {
         val response = ErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR, "Sorry.... Server Error!!")
         return ResponseEntity<ErrorResponse>(response, HttpStatus.valueOf(response.status))
     }
-
 }
