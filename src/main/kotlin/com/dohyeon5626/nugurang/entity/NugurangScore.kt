@@ -1,16 +1,16 @@
 package com.dohyeon5626.nugurang.entity
 
-import java.io.Serializable
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.OneToOne
+import com.dohyeon5626.nugurang.entity.id.NugurangScoreId
+import javax.persistence.*
 
 @Entity
 class NugurangScore (
-    @Id
-    @OneToOne
-    @JoinColumn(name = "id")
-    val user: User,
+    @EmbeddedId
+    val id: NugurangScoreId,
     val score: Int,
-): Serializable
+) {
+    @OneToOne
+    @MapsId("id")
+    @JoinColumn(name = "id")
+    val user: User? = null
+}

@@ -23,6 +23,9 @@ dependencies {
     // template engine
     implementation ("org.springframework.boot:spring-boot-starter-mustache")
 
+    // mail
+    implementation ("org.springframework.boot:spring-boot-starter-mail")
+
     // spring security
     implementation ("org.springframework.boot:spring-boot-starter-security")
 
