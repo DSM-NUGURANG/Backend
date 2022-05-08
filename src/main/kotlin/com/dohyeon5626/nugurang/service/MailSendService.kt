@@ -14,7 +14,7 @@ class MailSendService (
 ) {
     private val fromAddress: InternetAddress = InternetAddress(mailProperties.username, "누구랑")
 
-    private fun sendMail(toAddress: String, title: String, content: String) {
+    fun sendMail(toAddress: String, title: String, content: String) {
         val message: MimeMessage = mailSender.createMimeMessage()
         val messageHelper = MimeMessageHelper(message, false, "UTF-8")
         messageHelper.setTo(toAddress)

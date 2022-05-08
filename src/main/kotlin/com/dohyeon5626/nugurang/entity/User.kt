@@ -7,11 +7,11 @@ import javax.persistence.Id
 
 @Entity
 class User (
-    val password: String,
+    var password: String,
     val nickname: String,
     val email: String,
 ){
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Int = 0
+    var id: Int? = null
 }

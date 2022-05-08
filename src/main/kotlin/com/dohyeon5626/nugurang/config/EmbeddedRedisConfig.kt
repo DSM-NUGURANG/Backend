@@ -13,7 +13,10 @@ class EmbeddedRedisConfig (
 ) {
     @PostConstruct
     fun runRedis() {
-        redisServer = RedisServer(redisProperties.port)
+        if (redisServer == null) {
+            redisServer = RedisServer(redisProperties.port)
+            redisServer!!.start()
+        }
     }
 
     @PreDestroy

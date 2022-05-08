@@ -14,5 +14,5 @@ class SignUpCertify constructor(
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null
+    var id: Long? = null
 }

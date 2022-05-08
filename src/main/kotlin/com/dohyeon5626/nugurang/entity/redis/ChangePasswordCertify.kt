@@ -8,10 +8,10 @@ import javax.persistence.Id
 
 @RedisHash(timeToLive = 300)
 class ChangePasswordCertify constructor(
-    @field:Indexed private val email: String,
-    private val password: String
+    @field:Indexed val email: String,
+    val password: String
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private val id: Long? = null
+    var id: Long? = null
 }

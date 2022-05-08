@@ -10,9 +10,9 @@ class MailContentService {
 
     init {
         signUpTemplate = getResourceByPath("templates/SignUpMail.html")
-            .replace("{LINK}", "https://nugurang.herokuapp.com/check-token/sign-up" + "?token={TOKEN}")
+            .replace("{LINK}", "https://nugurang.herokuapp.com/check-sign-up?token={TOKEN}")
         changePasswordTemplate = getResourceByPath("templates/ChangePasswordMail.html")
-            .replace("{LINK}", "https://nugurang.herokuapp.com/check-token/sign-up" + "?token={TOKEN}")
+            .replace("{LINK}", "https://nugurang.herokuapp.com/check-password-recovery?token={TOKEN}")
     }
 
     private fun getResourceByPath(path: String): String {
@@ -20,12 +20,12 @@ class MailContentService {
         return String(bytes)
     }
 
-    fun createSignUpContent(token: String, email: String): String {
+    fun createSignUpContent(token: String): String {
         return signUpTemplate
             .replace("{TOKEN}", token)
     }
 
-    fun createChangePasswordContent(token: String, email: String): String {
+    fun createChangePasswordContent(token: String): String {
         return changePasswordTemplate
             .replace("{TOKEN}", token)
     }
