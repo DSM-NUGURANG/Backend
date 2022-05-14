@@ -23,6 +23,7 @@ class SecurityConfig (
             .sessionManagement().disable()
             .formLogin().disable().cors()
             .and().authorizeRequests()
+            .antMatchers("/user", "/user/**").authenticated()
             .anyRequest().permitAll()
             .and().apply(FilterConfig(jwtTokenProvider, objectMapper))
     }

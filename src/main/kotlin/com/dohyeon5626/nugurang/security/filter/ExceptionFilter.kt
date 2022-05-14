@@ -18,7 +18,10 @@ class ExceptionFilter (
         } catch (exception: Exception) {
             when (exception) {
                 is GlobalException -> fromErrorResponse(exception.errorCode, exception.reason, response)
-                else -> fromErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR, "Sorry.... Server Error!!", response)
+                else -> {
+                    exception.printStackTrace()
+                    fromErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR, "Sorry.... Server Error!!", response)
+                }
             }
         }
     }

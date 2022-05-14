@@ -1,6 +1,8 @@
 package com.dohyeon5626.nugurang.service
 
+import com.dohyeon5626.nugurang.entity.NugurangScore
 import com.dohyeon5626.nugurang.entity.User
+import com.dohyeon5626.nugurang.repository.NugurangScoreRepository
 import com.dohyeon5626.nugurang.repository.UserRepository
 import com.dohyeon5626.nugurang.repository.redis.ChangePasswordCertifyRepository
 import com.dohyeon5626.nugurang.repository.redis.SignUpCertifyRepository
@@ -12,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class TokenCheckService (
     private val userRepository: UserRepository,
+    private val nugurangScoreRepository: NugurangScoreRepository,
     private val signUpCertifyRepository: SignUpCertifyRepository,
     private val changePasswordCertifyRepository: ChangePasswordCertifyRepository,
     private val passwordEncoder: PasswordEncoder
@@ -21,8 +24,11 @@ class TokenCheckService (
         val signUpCertify = signUpCertifyRepository.findByIdOrNull(token.toLong())
             ?: return false
 
-        val user = User(signUpCertify.password, signUpCertify.nickname, signUpCertify.email)
-        userRepository.save(user)
+        var user = User(signUpCertify.password, signUpCertify.nickname, signUpCertify.email)
+        user = userRepository.save(user)
+
+        val score = NugurangScore(user.id!!, 0)
+        nugurangScoreRepository.save(score)
         signUpCertifyRepository.delete(signUpCertify)
         return true
     }

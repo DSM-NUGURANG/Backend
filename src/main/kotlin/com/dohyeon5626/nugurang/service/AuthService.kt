@@ -29,10 +29,10 @@ class AuthService (
 ) {
     @Transactional(readOnly = true)
     fun login(request: LoginRequest): LoginResponse {
-        userRepository.findByEmail(request.email)
+        val user = userRepository.findByEmail(request.email)
             ?.takeIf { passwordEncoder.matches(request.password, it.password) }
             ?: throw InvalidAuthDataException("Invalid login data")
-        return LoginResponse(jwtTokenProvider.generateAccessToken(request.email))
+        return LoginResponse(jwtTokenProvider.generateAccessToken(user.id!!.toString()))
     }
 
     @Transactional
