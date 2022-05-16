@@ -32,4 +32,8 @@ class UserService (
         val rank = (number/scoreList.size*100)
         return UserRankResponse(rank, number)
     }
+
+    fun deleteUser(userId: Int) {
+        userRepository.deleteById(userId)
+    }
 }
