@@ -20,7 +20,7 @@ class UserRankResponse (
 
     private fun getColor(rank: Int): String {
         return when (rank) {
-            in 1..5 -> BLACK
+            in 0..5 -> BLACK
             in 6..10 -> RED
             in 11..20 -> ORANGE
             in 21..30 -> YELLOW
